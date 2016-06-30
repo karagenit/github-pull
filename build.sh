@@ -5,6 +5,7 @@ cd "$(dirname "$(realpath "$0")")"
 
 # Config
 DOCS_DIR=./docs/
+GH_URL="karagenit/github-pull.git"
 GH_MODE="D_KEY"
 
 # Set Config by Command Line Args
@@ -36,10 +37,10 @@ if [ "$GH_MODE" = "USER" ]; then
 	read uname
 	echo -n "Password: "
 	read -s pword
-	git -C $DOCS_DIR pull https://${uname}:${pword}@github.com/frc868/reference.git
+	git -C $DOCS_DIR pull https://${uname}:${pword}@github.com/$GH_URL
 fi
 
 if [ "$GH_MODE" = "D_KEY" ]; then
 	echo Attempting SSH Key Access
-	git -C $DOCS_DIR pull git@github.com:frc868/reference.git
+	git -C $DOCS_DIR pull git@github.com:frc868/$GH_URL
 fi
